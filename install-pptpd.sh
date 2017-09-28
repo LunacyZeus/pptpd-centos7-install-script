@@ -56,6 +56,10 @@ echo "iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT" >> /etc/
 echo "iptables -A INPUT -p gre -j ACCEPT" >> /etc/rc.local
 echo "iptables -A OUTPUT  -p gre -j ACCEPT" >> /etc/rc.local
 
+echo "iptables -A INPUT -p tcp --dport 22 -j ACCEPT" >> /etc/rc.local
+echo "iptables -A INPUT -p tcp --dport 2222 -j ACCEPT" >> /etc/rc.local
+echo "iptables -A INPUT -p tcp --dport 1234 -j ACCEPT" >> /etc/rc.local
+
 echo "iptables -A FORWARD -p tcp --syn -s 192.168.0.0/24 -j TCPMSS --set-mss 1356" >> /etc/rc.local
 echo "iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE" >> /etc/rc.local
 
